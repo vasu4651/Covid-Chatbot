@@ -1,0 +1,49 @@
+{"intents": [
+        {"tag": "greeting",
+         "patterns": ["Hi", "How are you", "Is anyone there?", "Hello", "Good day", "Whats up"],
+         "responses": ["Hello!", "Hi there, how can I help?"],
+         "context_set": [""]
+        },
+        
+        {"tag": "name",
+         "patterns": ["what is your name", "what should I call you", "whats your name?"],
+         "responses": ["You can call me covid bot.", "I'm covid bot!", "I'm bot."],
+         "context_set": [""]
+        },
+        
+        {"tag": "problem_solving",
+        "patterns": ["i need help","help me","tell me","i have some problem","problem","can you help me?"],
+        "responses": ["yes i can help you","tell me what can i do for you","what do you want me to do","how can i help you","what kind of help do you need","tell me"],
+        "context_set": [""]
+        },
+        {
+        	"tag":"type 1 covid",
+        	"patterns":["fever ","chills","sore throat","muscle aches","headache"],
+        	"responses":["you might be suffering from mild covid"],
+        	"context_set":[""]
+
+        },
+	{
+        	"tag":"type 2 covid",
+        	"patterns":["appetite loss", "hoarse voice", "feeling tense", "dizziness", "severe fatigue or tiredness", "runny or blocked nose, or sneezing"],
+        	"responses":["you might be suffering from moderate covid"],
+        	"context_set":[""]
+
+        },
+	{
+        	"tag":"severe covid",
+        	"patterns":["drowsiness or loss of consciousness","skin being cold or clammy, or turning pale or a bluish colour","persistent pain or pressure in the chest","confusion"],
+        	"responses":["you might be suffering from severe covid"],
+        	"context_set":[""]
+
+        },
+	
+	{
+        	"tag":"COVID-19",
+        	"patterns":["difficulty in breathing","have a new cough that’s lasted for an hour","have had 3 or more episodes of coughing in 24 hours","are coughing more than usual","a new continuous cough"," a fever/high temperature (37.8C or greater)"],
+        	"responses":["you might be suffering from severe COVID-19"],
+        	"context_set":[""]
+
+        }	
+   ]
+}
