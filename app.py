@@ -163,13 +163,13 @@ def predictml():
         name = request.form['name']
         Age = request.form['age']
         sex = request.form['sex']
-        bp = request.form['bp']
+        # bp = request.form['bp']
         oxy = request.form['oxy']
         hb = request.form['heart']
-        ecg = request.form['ecg']
+        # ecg = request.form['ecg']
         Temperature = request.form['Temperature']
-        to_predict_list = np.array([[bp,oxy,hb,ecg,Temperature]])
-        mlmodel = pickle.load(open('LL.pkl', 'rb'))
+        to_predict_list = np.array([[oxy,hb,Temperature]])
+        mlmodel = pickle.load(open('new.pkl', 'rb'))
         prediction = mlmodel.predict(to_predict_list)[0]
         print("machine learning prediction {}  :  ".format(prediction))
         return render_template('chatbot.html', prediction=prediction)
@@ -196,8 +196,8 @@ def predictcb():
             print('chatbot prediction {}'.format(chatbot_pred))
 
             # ml = 1 : Healthy
-            # ml = 2, 3 : Fever, Chest Pain
-            # ml = 4 : Critcal
+            # ml = 2 : not sure
+            # ml = 3 : Covid detected
 
             if ml == 1 and chatbot_pred == 'NPCR':
                 prediction = 1
@@ -212,28 +212,28 @@ def predictcb():
                 result = 'Sensor = Healthy , chatbot=PCR '
                 instruction = 'Possible covid risk'
 
-            if (ml == 2 or ml == 3) and chatbot_pred == 'NPCR':
+            if ml == 2 and chatbot_pred == 'NPCR':
                 prediction = 4
-                result = 'Sensor = Fever or Chest Pain,  chatbot_pred = NPCR  '
+                result = 'Sensor = Not Sure,  chatbot_pred = NPCR  '
                 instruction = 'ssssssssssssssssss'
-            if (ml == 2 or ml == 3) and chatbot_pred == 'NFI':
+            if ml == 2 and chatbot_pred == 'NFI':
                 prediction = 5
-                result = 'Sensor = Fever or Chest Pain, chatbot=NFI'
+                result = 'Sensor = Not Sure, chatbot=NFI'
                 instruction = 'ssssssssssssssssss'
-            if (ml == 2 or ml == 3) and chatbot_pred ==  'PCR':
+            if ml == 2 and chatbot_pred ==  'PCR':
                 prediction = 6
-                result = 'Sensor = Fever or Chest Pain, chatbot=PCR'
+                result = 'Sensor = Not Sure, chatbot=PCR'
                 instruction = 'ssssssssssssssssss'
             
-            if ml == 4 and chatbot_pred == 'NPCR':
+            if ml == 3 and chatbot_pred == 'NPCR':
                 prediction = 7
                 result = 'Sensor = Critical, chatbot_pred = NPCR  '
                 instruction = 'ssssssssssssssssss'
-            if ml == 4 and chatbot_pred == 'NFI':
+            if ml == 3 and chatbot_pred == 'NFI':
                 prediction = 8
                 result = 'Sensor = Critical, chatbot = NFI'
                 instruction = 'ssssssssssssssssss'
-            if ml == 4 and chatbot_pred ==  'PCR':
+            if ml == 3 and chatbot_pred ==  'PCR':
                 prediction = 9
                 result = 'Sensor = Critical, chatbot = PCR'
                 instruction = 'ssssssssssssssssss'
