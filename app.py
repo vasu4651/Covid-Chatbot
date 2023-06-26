@@ -129,7 +129,7 @@ def userlog():
         else:
             data=requests.get("https://api.thingspeak.com/channels/2191752/feeds.json?api_key=UV4HYQEF6E65N4E8&results=2")
             hb=float(data.json()['feeds'][-1]['field2'])
-            temp=float(data.json()['feeds'][-1]['field1'])
+            temp=float(((data.json()['feeds'][-1]['field1']) * 9/5) + 32)
             oxy=float(data.json()['feeds'][-1]['field3'])
             bp=float(data.json()['feeds'][-1]['field4'])
             return render_template('userlog.html',hb=hb,temp=temp,oxy=oxy,bp=bp)
