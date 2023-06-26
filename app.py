@@ -307,39 +307,39 @@ def predictip():
         instruction = 'gg'
         if cb == 1 and pred == 0:
             prediction = 0
-            result = 'cb == 1 and pred == 0 ppppppppppppppppppp'
+            result = 'cb == 1 and pred == 0 '
             instruction = 'ssssssssssssssssss'
         if cb == 1 and pred == 1:
             prediction = 1
-            result = 'cb == 1 and pred == 1 ppppppppppppppppppp'
+            result = 'cb == 1 and pred == 1'
             instruction = 'ssssssssssssssssss'
         if cb == 1 and pred == 2:
             prediction = 2
-            result = 'cb == 1 and pred == 2 ppppppppppppppppppp'
+            result = 'cb == 1 and pred == 2'
             instruction = 'ssssssssssssssssss'
         if cb == 2 and pred == 0:
             prediction = 0
-            result = 'cb == 2 and pred == 0 ppppppppppppppppppp'
+            result = 'cb == 2 and pred == 0'
             instruction = 'ssssssssssssssssss'
         if cb == 2 and pred == 1:
             prediction = 1
-            result = 'cb == 2 and pred == 1 ppppppppppppppppppp'
+            result = 'cb == 2 and pred == 1'
             instruction = 'ssssssssssssssssss'
         if cb == 2 and pred == 2:
             prediction = 2
-            result = 'cb == 2 and pred == 2 ppppppppppppppppppp'
+            result = 'cb == 2 and pred == 2'
             instruction = 'ssssssssssssssssss'
         if cb == 3 and pred == 0:
             prediction = 0
-            result = 'cb == 3 and pred == 0 ppppppppppppppppppp'
+            result = 'cb == 3 and pred == 0'
             instruction = 'ssssssssssssssssss'
         if cb == 3 and pred == 1:
             prediction = 1
-            result = 'cb == 3 and pred == 1 ppppppppppppppppppp'
+            result = 'cb == 3 and pred == 1'
             instruction = 'ssssssssssssssssss'
         if cb == 3 and pred == 2:
             prediction = 2
-            result = 'cb == 3 and pred == 2 ppppppppppppppppppp'
+            result = 'cb == 3 and pred == 2 '
             instruction = 'ssssssssssssssssss'
         
         print('final prediction {}'.format(prediction))
