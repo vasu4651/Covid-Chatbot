@@ -129,7 +129,8 @@ def userlog():
         else:
             data=requests.get("https://api.thingspeak.com/channels/2191752/feeds.json?api_key=UV4HYQEF6E65N4E8&results=2")
             hb=float(data.json()['feeds'][-1]['field2'])
-            temp=float(((data.json()['feeds'][-1]['field1']) * 9/5) + 32)
+            temp=float(data.json()['feeds'][-1]['field1'])
+            temp = float(temp*9/5) + 32.0
             oxy=float(data.json()['feeds'][-1]['field3'])
             bp=float(data.json()['feeds'][-1]['field4'])
             return render_template('userlog.html',hb=hb,temp=temp,oxy=oxy,bp=bp)
@@ -179,64 +180,70 @@ def predictml():
 def predictcb():
     if request.method == 'POST':
         query = request.form['query']
-        ml = int(request.form['ml'])
         res = chatbot_response(query)
+        ml = int(request.form['ml'])
 
-        chatbot_pred = 'gg'
+        chatbot_pred = 0
         if 'mild' in res:
-            chatbot_pred = 'NPCR'
+            chatbot_pred = 1
         if 'moderate' in res:
-            chatbot_pred = 'NFI'
+            chatbot_pred = 2
         if 'severe' in res:
-            chatbot_pred = 'PCR'
+            chatbot_pred = 3
 
-        if chatbot_pred == 'gg':
+        if chatbot_pred == 0:
             return render_template('chatbot.html', prediction=ml, res=res)
         else:
             print('chatbot prediction {}'.format(chatbot_pred))
 
-            # ml = 1 : Healthy
-            # ml = 2 : not sure
-            # ml = 3 : Covid detected
+            # ml = 1 : Healthy, NPCR
+            # ml = 2 : not sure, NFI
+            # ml = 3 : Covid detected, PCR
 
-            if ml == 1 and chatbot_pred == 'NPCR':
+            if ml == 1 and chatbot_pred == 1:
                 prediction = 1
-                result = 'Sensor = Healthy, chatbot_pred = NPCR '
-                instruction = 'You have no possible covid risk, Good Luck!!'
-            if ml == 1 and chatbot_pred == 'NFI':
-                prediction = 2
-                result = 'Sensor = Healthy, chatbot=NFI'
-                instruction = 'There is need for further investigation'
-            if ml == 1 and chatbot_pred ==  'PCR':
-                prediction = 3
-                result = 'Sensor = Healthy , chatbot=PCR '
-                instruction = 'Possible covid risk'
+                result = 'Sensor Prediction = No Possible Covid Risk, Chatbot Prediction = No Possible Covid Risk\nFinal Result = No Possible Covid Risk'
+                instruction = 'Everything seems to be normal. But you could be an asymptomatic covid patient. Suggested you go for a lung X-ray as your lungs might be affected.\n\n\n\nGeneral Instruction Set:\nStay informed\nPractice good hygiene\nWear a mask\nMaintain physical distance\nAvoid close contact\nPractice respiratory etiquette\nVentilate indoor spaces\nClean and disinfect\nStay at home if unwell\nFollow government guidelines'
 
-            if ml == 2 and chatbot_pred == 'NPCR':
-                prediction = 4
-                result = 'Sensor = Not Sure,  chatbot_pred = NPCR  '
-                instruction = 'ssssssssssssssssss'
-            if ml == 2 and chatbot_pred == 'NFI':
-                prediction = 5
-                result = 'Sensor = Not Sure, chatbot=NFI'
-                instruction = 'ssssssssssssssssss'
-            if ml == 2 and chatbot_pred ==  'PCR':
-                prediction = 6
-                result = 'Sensor = Not Sure, chatbot=PCR'
-                instruction = 'ssssssssssssssssss'
+            if ml == 1 and chatbot_pred == 2:
+                prediction = 2
+                result = 'Sensor Prediction = No Possible Covid Risk, Chatbot Prediction = Need Further Investigation\nFinal Result = Need Further Investigation'
+                instruction = 'Your vitals are normal, but the symptoms are ambiguous with respect to Covid-19. It is suggested you go for X-ray in our next diagnosis to check if the lungs are affected from Covid-19 or not.\n\n\n\nGeneral Instruction Set:\nIsolate yourself\nMonitor your symptoms\nTake medications prescribed by the State Government\nFollow respiratory etiquette\nWear a mask\nPractice good hygiene\nClean and disinfect regularly\nSeek medical attention \nFollow government guidelines'
+
+            if ml == 1 and chatbot_pred ==  3:
+                prediction = 3
+                result = 'Sensor Prediction = No Possible Covid Risk , Chatbot Prediction = Possible Covid Risk\nFinal Result = Possible Covid Risk'
+                instruction = 'Your vitals are normal, but your symptoms are that of Covid-19. There is a possibility you are suffering from Covid-19. You should get a RT-PCR test from your local hospital.\n\n\n\nGeneral Instruction Set:\nIsolate yourself\nMonitor your symptoms\nTake medications prescribed by the State Government\nFollow respiratory etiquette\nWear a mask\nPractice good hygiene\nClean and disinfect regularly\nSeek medical attention \nFollow government guidelines'
+
+            if ml == 2 and chatbot_pred == 1:
+                prediction = 1
+                result = 'Sensor = Need Further Investigation,  Chatbot Prediction = No Possible Covid Risk\nFinal Result = No Possible Covid Risk '
+                instruction = 'It does not seem you are Covid-19 infected as of now. Keep up with the further diagnosis.\n\n\n\nGeneral Instruction Set:\nStay informed\nPractice good hygiene\nWear a mask\nMaintain physical distance\nAvoid close contact\nPractice respiratory etiquette\nVentilate indoor spaces\nClean and disinfect\nStay at home if unwell\nFollow government guidelines'
+
+            if ml == 2 and chatbot_pred == 2:
+                prediction = 2
+                result = 'Sensor Prediction = Need Further Investigation, Chatbot Prediction = Need Further Investigation\nFinal Result = Need Further Investigation'
+                instruction = 'Our model cannot give an accurate prediction as there is ambiguity in both your symptoms and vitals with respect to Covid-19. Its up to you to go for further RT-PCR or an X-ray diagnosis.\n\n\n\nGeneral Instruction Set:\nIsolate yourself\nMonitor your symptoms\nTake medications prescribed by the State Government\nFollow respiratory etiquette\nWear a mask\nPractice good hygiene\nClean and disinfect regularly\nSeek medical attention \nFollow government guidelines'
+
+            if ml == 2 and chatbot_pred ==  3:
+                prediction = 3
+                result = 'Sensor Prediction = Need Further Investigation, Chatbot Prediction = Possible Covid Risk\nFinal Result = Possible Covid Risk'
+                instruction = 'Your vitals are ambiguous, though your symptoms reflect you might have Covid-19. You are most possibly infected from Covid-19. To check the conditions of your lungs you might opt for X-ray prediction.\n\n\n\nGeneral Instruction Set:\nIsolate yourself\nMonitor your symptoms\nTake medications prescribed by the State Government\nFollow respiratory etiquette\nWear a mask\nPractice good hygiene\nClean and disinfect regularly\nSeek medical attention \nFollow government guidelines'
             
-            if ml == 3 and chatbot_pred == 'NPCR':
-                prediction = 7
-                result = 'Sensor = Critical, chatbot_pred = NPCR  '
-                instruction = 'ssssssssssssssssss'
-            if ml == 3 and chatbot_pred == 'NFI':
-                prediction = 8
-                result = 'Sensor = Critical, chatbot = NFI'
-                instruction = 'ssssssssssssssssss'
-            if ml == 3 and chatbot_pred ==  'PCR':
-                prediction = 9
-                result = 'Sensor = Critical, chatbot = PCR'
-                instruction = 'ssssssssssssssssss'
+            if ml == 3 and chatbot_pred == 1:
+                prediction = 2
+                result = 'Sensor Prediction = Possible Covid Risk, Chatbot Prediction = No Possible Covid Risk\nFinal Result = Need Further Investigation'
+                instruction = 'The results are not decisive with the given information. Thus further investigation is needed\nYou may opt for RT-PCR test from your local hospital. Also you can go ahead for an X-ray to check whether lungs are affected by Covid-19 or not.\n\n\n\nGeneral Instruction Set:\nIsolate yourself\nMonitor your symptoms\nTake medications prescribed by the State Government\nFollow respiratory etiquette\nWear a mask\nPractice good hygiene\nClean and disinfect regularly\nSeek medical attention \nFollow government guidelines'
+
+            if ml == 3 and chatbot_pred == 2:
+                prediction = 3
+                result = 'Sensor Prediction = Possible Covid Risk, Chatbot Prediction = Need Further Investigation\nFinal Prediction = Possible Covid Risk'
+                instruction = 'There is an ambiguity due to the symptoms experienced by you. Though your vitals say you are at high risk of covid. To get a firm decision you may opt for X-ray.\n\n\n\nGeneral Instruction Set:\nIsolate yourself\nMonitor your symptoms\nTake medications prescribed by the State Government\nFollow respiratory etiquette\nWear a mask\nPractice good hygiene\nClean and disinfect regularly\nSeek medical attention \nFollow government guidelines'
+
+            if ml == 3 and chatbot_pred ==  3:
+                prediction = 3
+                result = 'Sensor Prediction = Possible Covid Risk, Chatbot Prediction = Possible Covid Risk\nFinal Prediction = Possible Covid Risk'
+                instruction = "Unfortunately it is quite possible that you are covid infected\nTo get further clarity it is advised to also go for an X-ray\n\n\n\nGeneral Instruction Set:\nIsolate yourself\nMonitor your symptoms\nTake medications prescribed by the State Government\nFollow respiratory etiquette\nWear a mask\nPractice good hygiene\nClean and disinfect regularly\nSeek medical attention \nFollow government guidelines"
 
             print('ml and chatbot prediction: {}'.format(prediction))
             print('result: {}'.format(result))
