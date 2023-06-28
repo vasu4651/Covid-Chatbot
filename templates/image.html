@@ -16,11 +16,24 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="http://127.0.0.1:5000/static/css/styles.css" rel="stylesheet" />
         <style>
+            *{
+                box-sizing: border-box;
+            }
+            body{
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-position: center top;
+                font-family: 'Poppins', sans-serif;
+                margin: 0;
+            }
             #msform{
                 display: none;
             }
             #msform.active{
                 display: block;
+            }
+            .chatbotPred{
+                font-size: 20px;
             }
         </style>
     </head>
@@ -50,9 +63,16 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     {% if prediction %}
-                                    <h3>Status: {{result}}</h3>
-                                    <h3>Instruction: {{instruction}}</h3>
-                                    <h3>Do you need prediction based on X-ray ?</h3>
+                                    <h4>Status: </h4>
+                                    <div class="chatbotPred">{{result}}</div>
+                                    <br>
+                                    <h4>Evaluation: </h4>
+                                    <div class="chatbotPred">{{instruction}}</div>
+                                    <br>
+                                    <h4>General Instruction Set: </h4>
+                                    <div class="chatbotPred">{{insSet}}</div>
+                                    <br> <br>
+                                    <h3 class="xray">Do you need prediction based on X-ray ?</h3>
                                     <a data-value="#msform" onclick="toggleform(event)" class="btn btn-success">click here</a>
                                     <form action="/predictip" id="msform" method="post">
                                         <!-- fieldsets -->
@@ -71,8 +91,12 @@
                                         </fieldset>
                                     </form>
                                     {% else %}
-                                    <h3>Status: {{result1}}</h3>
-                                    <h3>Instruction: {{instruction1}}</h3>
+                                    <h4>Status: </h4>
+                                    <div class="chatbotPred">{{result1}}</div>
+                                    <br>
+                                    <h4>Instruction: </h4>
+                                    <div class="chatbotPred">{{instruction1}}</div>
+
                                     {% endif %}
                                 </div>
                             </div>
@@ -106,5 +130,6 @@
         <!-- Core theme JS-->
         <script src="http://127.0.0.1:5000/static/js/scripts.js"></script>
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+        <!-- {{insSet}} -->
     </body>
 </html>

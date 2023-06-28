@@ -202,53 +202,62 @@ def predictcb():
 
             if ml == 1 and chatbot_pred == 1:
                 prediction = 1
-                result = 'Sensor Prediction = No Possible Covid Risk, Chatbot Prediction = No Possible Covid Risk\nFinal Result = No Possible Covid Risk'
-                instruction = 'Everything seems to be normal. But you could be an asymptomatic covid patient. Suggested you go for a lung X-ray as your lungs might be affected.\n\n\n\nGeneral Instruction Set:\nStay informed\nPractice good hygiene\nWear a mask\nMaintain physical distance\nAvoid close contact\nPractice respiratory etiquette\nVentilate indoor spaces\nClean and disinfect\nStay at home if unwell\nFollow government guidelines'
+                result = 'Sensor Prediction = No Possible Covid Risk, Chatbot Prediction = No Possible Covid Risk. Final Result = No Possible Covid Risk'
+                instruction = 'Everything seems to be normal. But you could be an asymptomatic covid patient. Suggested you go for a lung X-ray as your lungs might be affected.'
+                insSet = "•Stay informed  •Practice good hygiene  •Wear a mask  •Maintain physical distance  •Avoid close contact  •Practice respiratory etiquette  •Ventilate indoor spaces  •Clean and disinfect  •Stay at home if unwell  •Follow government guidelines."
 
             if ml == 1 and chatbot_pred == 2:
                 prediction = 2
-                result = 'Sensor Prediction = No Possible Covid Risk, Chatbot Prediction = Need Further Investigation\nFinal Result = Need Further Investigation'
-                instruction = 'Your vitals are normal, but the symptoms are ambiguous with respect to Covid-19. It is suggested you go for X-ray in our next diagnosis to check if the lungs are affected from Covid-19 or not.\n\n\n\nGeneral Instruction Set:\nIsolate yourself\nMonitor your symptoms\nTake medications prescribed by the State Government\nFollow respiratory etiquette\nWear a mask\nPractice good hygiene\nClean and disinfect regularly\nSeek medical attention \nFollow government guidelines'
+                result = 'Sensor Prediction = No Possible Covid Risk, Chatbot Prediction = Need Further Investigation. Final Result = Need Further Investigation'
+                instruction = 'Your vitals are normal, but the symptoms are ambiguous with respect to Covid-19. It is suggested you go for X-ray in our next diagnosis to check if the lungs are affected from Covid-19 or not.'
+                insSet = "•Isolate yourself  •Monitor your symptoms  •Take medications prescribed by the State Government  •Follow respiratory etiquette  •Wear a mask •Practice good hygiene  •Clean and disinfect regularly  •Seek medical attention.  •Follow government guidelines."
 
             if ml == 1 and chatbot_pred ==  3:
                 prediction = 3
-                result = 'Sensor Prediction = No Possible Covid Risk , Chatbot Prediction = Possible Covid Risk\nFinal Result = Possible Covid Risk'
-                instruction = 'Your vitals are normal, but your symptoms are that of Covid-19. There is a possibility you are suffering from Covid-19. You should get a RT-PCR test from your local hospital.\n\n\n\nGeneral Instruction Set:\nIsolate yourself\nMonitor your symptoms\nTake medications prescribed by the State Government\nFollow respiratory etiquette\nWear a mask\nPractice good hygiene\nClean and disinfect regularly\nSeek medical attention \nFollow government guidelines'
+                result = 'Sensor Prediction = No Possible Covid Risk , Chatbot Prediction = Possible Covid Risk. Final Result = Possible Covid Risk'
+                instruction = 'Your vitals are normal, but your symptoms are that of Covid-19. There is a possibility you are suffering from Covid-19. You should get a RT-PCR test from your local hospital.'
+                insSet = "•Isolate yourself  •Monitor your symptoms  •Take medications prescribed by the State Government  •Follow respiratory etiquette  •Wear a mask •Practice good hygiene  •Clean and disinfect regularly  •Seek medical attention.  •Follow government guidelines."
 
             if ml == 2 and chatbot_pred == 1:
                 prediction = 1
-                result = 'Sensor = Need Further Investigation,  Chatbot Prediction = No Possible Covid Risk\nFinal Result = No Possible Covid Risk '
-                instruction = 'It does not seem you are Covid-19 infected as of now. Keep up with the further diagnosis.\n\n\n\nGeneral Instruction Set:\nStay informed\nPractice good hygiene\nWear a mask\nMaintain physical distance\nAvoid close contact\nPractice respiratory etiquette\nVentilate indoor spaces\nClean and disinfect\nStay at home if unwell\nFollow government guidelines'
+                result = 'Sensor Prediction = Need Further Investigation,  Chatbot Prediction = No Possible Covid Risk. Final Result = No Possible Covid Risk '
+                instruction = 'It does not seem you are Covid-19 infected as of now. Keep up with the further diagnosis.'
+                insSet = "•Stay informed  •Practice good hygiene  •Wear a mask  •Maintain physical distance  •Avoid close contact  •Practice respiratory etiquette  •Ventilate indoor spaces  •Clean and disinfect  •Stay at home if unwell  •Follow government guidelines."
 
             if ml == 2 and chatbot_pred == 2:
                 prediction = 2
-                result = 'Sensor Prediction = Need Further Investigation, Chatbot Prediction = Need Further Investigation\nFinal Result = Need Further Investigation'
-                instruction = 'Our model cannot give an accurate prediction as there is ambiguity in both your symptoms and vitals with respect to Covid-19. Its up to you to go for further RT-PCR or an X-ray diagnosis.\n\n\n\nGeneral Instruction Set:\nIsolate yourself\nMonitor your symptoms\nTake medications prescribed by the State Government\nFollow respiratory etiquette\nWear a mask\nPractice good hygiene\nClean and disinfect regularly\nSeek medical attention \nFollow government guidelines'
+                result = 'Sensor Prediction = Need Further Investigation, Chatbot Prediction = Need Further Investigation. Final Result = Need Further Investigation'
+                instruction = 'Our model cannot give an accurate prediction as there is ambiguity in both your symptoms and vitals with respect to Covid-19. Its up to you to go for further RT-PCR or an X-ray diagnosis.'
+                insSet = "•Isolate yourself  •Monitor your symptoms  •Take medications prescribed by the State Government  •Follow respiratory etiquette  •Wear a mask •Practice good hygiene  •Clean and disinfect regularly  •Seek medical attention.  •Follow government guidelines."
 
             if ml == 2 and chatbot_pred ==  3:
                 prediction = 3
-                result = 'Sensor Prediction = Need Further Investigation, Chatbot Prediction = Possible Covid Risk\nFinal Result = Possible Covid Risk'
-                instruction = 'Your vitals are ambiguous, though your symptoms reflect you might have Covid-19. You are most possibly infected from Covid-19. To check the conditions of your lungs you might opt for X-ray prediction.\n\n\n\nGeneral Instruction Set:\nIsolate yourself\nMonitor your symptoms\nTake medications prescribed by the State Government\nFollow respiratory etiquette\nWear a mask\nPractice good hygiene\nClean and disinfect regularly\nSeek medical attention \nFollow government guidelines'
+                result = 'Sensor Prediction = Need Further Investigation, Chatbot Prediction = Possible Covid Risk. Final Result = Possible Covid Risk'
+                instruction = 'Your vitals are ambiguous, though your symptoms reflect you might have Covid-19. You are most possibly infected from Covid-19. To check the conditions of your lungs you might opt for X-ray prediction.'
+                insSet = "•Isolate yourself  •Monitor your symptoms  •Take medications prescribed by the State Government  •Follow respiratory etiquette  •Wear a mask •Practice good hygiene  •Clean and disinfect regularly  •Seek medical attention.  •Follow government guidelines."
             
             if ml == 3 and chatbot_pred == 1:
                 prediction = 2
-                result = 'Sensor Prediction = Possible Covid Risk, Chatbot Prediction = No Possible Covid Risk\nFinal Result = Need Further Investigation'
-                instruction = 'The results are not decisive with the given information. Thus further investigation is needed\nYou may opt for RT-PCR test from your local hospital. Also you can go ahead for an X-ray to check whether lungs are affected by Covid-19 or not.\n\n\n\nGeneral Instruction Set:\nIsolate yourself\nMonitor your symptoms\nTake medications prescribed by the State Government\nFollow respiratory etiquette\nWear a mask\nPractice good hygiene\nClean and disinfect regularly\nSeek medical attention \nFollow government guidelines'
+                result = 'Sensor Prediction = Possible Covid Risk, Chatbot Prediction = No Possible Covid Risk. Final Result = Need Further Investigation'
+                instruction = 'The results are not decisive with the given information. Thus further investigation is needed •You may opt for RT-PCR test from your local hospital. Also you can go ahead for an X-ray to check whether lungs are affected by Covid-19 or not.'
+                insSet = "•Isolate yourself  •Monitor your symptoms  •Take medications prescribed by the State Government  •Follow respiratory etiquette  •Wear a mask •Practice good hygiene  •Clean and disinfect regularly  •Seek medical attention.  •Follow government guidelines."
 
             if ml == 3 and chatbot_pred == 2:
                 prediction = 3
-                result = 'Sensor Prediction = Possible Covid Risk, Chatbot Prediction = Need Further Investigation\nFinal Prediction = Possible Covid Risk'
-                instruction = 'There is an ambiguity due to the symptoms experienced by you. Though your vitals say you are at high risk of covid. To get a firm decision you may opt for X-ray.\n\n\n\nGeneral Instruction Set:\nIsolate yourself\nMonitor your symptoms\nTake medications prescribed by the State Government\nFollow respiratory etiquette\nWear a mask\nPractice good hygiene\nClean and disinfect regularly\nSeek medical attention \nFollow government guidelines'
+                result = 'Sensor Prediction = Possible Covid Risk, Chatbot Prediction = Need Further Investigation. Final Prediction = Possible Covid Risk'
+                instruction = 'There is an ambiguity due to the symptoms experienced by you. Though your vitals say you are at high risk of covid. To get a firm decision you may opt for X-ray.'
+                insSet = "•Isolate yourself  •Monitor your symptoms  •Take medications prescribed by the State Government  •Follow respiratory etiquette  •Wear a mask •Practice good hygiene  •Clean and disinfect regularly  •Seek medical attention.  •Follow government guidelines."
 
             if ml == 3 and chatbot_pred ==  3:
                 prediction = 3
-                result = 'Sensor Prediction = Possible Covid Risk, Chatbot Prediction = Possible Covid Risk\nFinal Prediction = Possible Covid Risk'
-                instruction = "Unfortunately it is quite possible that you are covid infected\nTo get further clarity it is advised to also go for an X-ray\n\n\n\nGeneral Instruction Set:\nIsolate yourself\nMonitor your symptoms\nTake medications prescribed by the State Government\nFollow respiratory etiquette\nWear a mask\nPractice good hygiene\nClean and disinfect regularly\nSeek medical attention \nFollow government guidelines"
+                result = 'Sensor Prediction = Possible Covid Risk, Chatbot Prediction = Possible Covid Risk. Final Prediction = Possible Covid Risk'
+                instruction = "Unfortunately it is quite possible that you are covid infected •To get further clarity it is advised to also go for an X-ray"
+                insSet = "•Isolate yourself  •Monitor your symptoms  •Take medications prescribed by the State Government  •Follow respiratory etiquette  •Wear a mask •Practice good hygiene  •Clean and disinfect regularly  •Seek medical attention.  •Follow government guidelines."
 
             print('ml and chatbot prediction: {}'.format(prediction))
             print('result: {}'.format(result))
             print('instruction: {}'.format(instruction))
-            return render_template('image.html', prediction=prediction, result=result, instruction=instruction)
+            return render_template('image.html', prediction=prediction, result=result, instruction=instruction, insSet=insSet)
     return render_template('chatbot.html')
 
 @app.route("/predictip", methods = ['POST', 'GET'])
@@ -312,42 +321,55 @@ def predictip():
         prediction = 0
         result = 'gg'
         instruction = 'gg'
-        if cb == 1 and pred == 0:
-            prediction = 0
-            result = 'cb == 1 and pred == 0 '
-            instruction = 'ssssssssssssssssss'
-        if cb == 1 and pred == 1:
-            prediction = 1
-            result = 'cb == 1 and pred == 1'
-            instruction = 'ssssssssssssssssss'
-        if cb == 1 and pred == 2:
-            prediction = 2
-            result = 'cb == 1 and pred == 2'
-            instruction = 'ssssssssssssssssss'
-        if cb == 2 and pred == 0:
-            prediction = 0
-            result = 'cb == 2 and pred == 0'
-            instruction = 'ssssssssssssssssss'
-        if cb == 2 and pred == 1:
-            prediction = 1
-            result = 'cb == 2 and pred == 1'
-            instruction = 'ssssssssssssssssss'
-        if cb == 2 and pred == 2:
-            prediction = 2
-            result = 'cb == 2 and pred == 2'
-            instruction = 'ssssssssssssssssss'
-        if cb == 3 and pred == 0:
-            prediction = 0
-            result = 'cb == 3 and pred == 0'
-            instruction = 'ssssssssssssssssss'
-        if cb == 3 and pred == 1:
-            prediction = 1
-            result = 'cb == 3 and pred == 1'
-            instruction = 'ssssssssssssssssss'
-        if cb == 3 and pred == 2:
-            prediction = 2
-            result = 'cb == 3 and pred == 2 '
-            instruction = 'ssssssssssssssssss'
+        # pred = { (0:Covid), (1:Viral Pneumonia), (2:Normal) }
+
+        if pred == 0:
+            result = "Your lung X-ray shows signs of Covid-19."
+            instruction = "You are advised to go for RT-PCR."
+        if pred == 1:
+            result = "Your lung X-ray shows signs of Viral Pneumonia."
+            instruction = "If experiencing symptoms of viral pneumonia, such as persistent cough and difficulty breathing, seek urgent medical care to ensure proper diagnosis and treatment"
+        if pred == 2 or pred==3 :
+            result = "Your lung X-ray looks normal."
+            instruction = "Take care of yourself and have regular check-ups."
+
+
+        # if cb == 1 and pred == 0:
+        #     prediction = 0
+        #     result = 'cb == 1 and pred == 0 '
+        #     instruction = 'ssssssssssssssssss'
+        # if cb == 1 and pred == 1:
+        #     prediction = 1
+        #     result = 'cb == 1 and pred == 1'
+        #     instruction = 'ssssssssssssssssss'
+        # if cb == 1 and pred == 2:
+        #     prediction = 2
+        #     result = 'cb == 1 and pred == 2'
+        #     instruction = 'ssssssssssssssssss'
+        # if cb == 2 and pred == 0:
+        #     prediction = 0
+        #     result = 'cb == 2 and pred == 0'
+        #     instruction = 'ssssssssssssssssss'
+        # if cb == 2 and pred == 1:
+        #     prediction = 1
+        #     result = 'cb == 2 and pred == 1'
+        #     instruction = 'ssssssssssssssssss'
+        # if cb == 2 and pred == 2:
+        #     prediction = 2
+        #     result = 'cb == 2 and pred == 2'
+        #     instruction = 'ssssssssssssssssss'
+        # if cb == 3 and pred == 0:
+        #     prediction = 0
+        #     result = 'cb == 3 and pred == 0'
+        #     instruction = 'ssssssssssssssssss'
+        # if cb == 3 and pred == 1:
+        #     prediction = 1
+        #     result = 'cb == 3 and pred == 1'
+        #     instruction = 'ssssssssssssssssss'
+        # if cb == 3 and pred == 2:
+        #     prediction = 2
+        #     result = 'cb == 3 and pred == 2 '
+        #     instruction = 'ssssssssssssssssss'
         
         print('final prediction {}'.format(prediction))
         print('result: {}'.format(result))
